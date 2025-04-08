@@ -4,7 +4,7 @@ import importlib
 
 from pyrogram import Client, idle
 from Copyright import config
-from Copyright.plungins import ALL_MODULES
+from Copyright.plugins import ALL_MODULES
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,7 +28,7 @@ async def main():
 
     for module in ALL_MODULES:
         try:
-            importlib.import_module(f"Copyright.plungins{module}")
+            importlib.import_module(f"Copyright.plugins{module}")
         except Exception as e:
             log.error(f"Failed to import {module}: {e}")
 
