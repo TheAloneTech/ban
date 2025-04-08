@@ -5,7 +5,7 @@ import importlib
 from pyrogram import idle
 
 from Copyright import app
-from Copyright.plugins import ALL_MODULES
+from Copyright.plungins import ALL_MODULES
 
 logging.basicConfig(
     level=logging.INFO,
@@ -22,7 +22,7 @@ async def main():
     log.info("Starting bot...")
     await app.start()
     for all_module in ALL_MODULES:
-        imported_module = importlib.import_module("Copyright.plugins" + all_module)
+        imported_module = importlib.import_module("Copyright.plungins" + all_module)
     log.info("Bot Started")
     await idle()
     await app.stop()
