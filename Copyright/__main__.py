@@ -3,7 +3,7 @@ import asyncio
 import importlib
 
 from pyrogram import Client, idle
-from Copyright import config
+import config
 from Copyright.plugins import ALL_MODULES
 
 logging.basicConfig(
