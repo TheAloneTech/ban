@@ -4,7 +4,7 @@ import importlib
 
 from pyrogram import idle
 from Copyright import app
-from Copyright.plungins import ALL_MODULES
+from Copyright.plugins import ALL_MODULES
 
 # Logging Configuration
 logging.basicConfig(
