@@ -1,9 +1,10 @@
 import logging
 import asyncio
 import importlib
-from config import *
+
 from pyrogram import Client, idle
-from Copyright.plugins import ALL_MODULES
+from Copyright import config
+from Copyright.plungins import ALL_MODULES
 
 logging.basicConfig(
     level=logging.INFO,
@@ -11,38 +12,33 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()]
 )
 
-logging.getLogger("pyrogram").setLevel(logging.ERROR)
-logging.getLogger("pymongo").setLevel(logging.ERROR)
-
 log = logging.getLogger("Copyright-Community-Bot")
 
-# ✅ yahan par hi app define karte hain
 app = Client(
-    name="copyright_bot",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN
+    name="bot",
+    api_id=config.API_ID,
+    api_hash=config.API_HASH,
+    bot_token=config.BOT_TOKEN
 )
-
 
 async def main():
     log.info("Starting bot...")
+
     await app.start()
 
-    for all_module in ALL_MODULES:
+    for module in ALL_MODULES:
         try:
-            importlib.import_module(f"Copyright.plugins{all_module}")
+            importlib.import_module(f"Copyright.plungins{module}")
         except Exception as e:
-            log.error(f"Failed to import {all_module}: {e}")
+            log.error(f"Failed to import {module}: {e}")
 
-    log.info("Bot Started")
+    log.info("Bot Started.")
     await idle()
     await app.stop()
-    log.info("Bot Stopped")
-
+    log.info("Bot Stopped.")
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
-        log.info("Bot stopped by user.")
+        log.info("Bot stopped manually.")
