@@ -1,0 +1,36 @@
+{
+    "name": "Copyright",
+    "description": "Copyright Community Bot",
+    "logo": "https://envs.sh/WkW.jpg",
+    "keywords": [
+    "python3",
+    "telegram",
+    "bot",
+    "Sanatani",
+    "Copyright",
+    "telegram-bot",
+    "pyrogram"
+    ],
+    
+    "stack": "container",
+    "env": {
+      "BOT_TOKEN": {
+        "description": "A Bot's token Get it from @Botfather",
+        "value": "",
+        "required": true
+      },
+    "buildpacks": [
+          {
+              "url": "heroku/python"
+          },
+          {
+              "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+          }
+      ],
+      "formation": {
+          "worker": {
+              "quantity": 1,
+              "size": "basic"
+          }
+      }
+  }
