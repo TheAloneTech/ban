@@ -11,6 +11,5 @@ authdb = db["authusers"]
 
 from .chats import *
 from .admin import *
-from .fsub import *
 from .sudo import *
 from .auth import *
